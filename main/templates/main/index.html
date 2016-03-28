@@ -1,0 +1,166 @@
+<!-- Pallet: 69D2E7, A7DBD8, E0E4CC, F38630, FA6900 - Azul, Azul/Verde, Verde/Cinza/Amarelo, Laranja, Laranja/Vermelho -->
+<!DOCTYPE html>
+<html lang="pt_BR">
+    <head>
+        <title>Gabriel Oliveira - Desenvolvedor Web / Android</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+        <link rel='shortcut icon' type='image/x-icon' href='/portfolio/favicon.ico' />
+        
+        <!-- FANCYBOX -->
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="{{ STATIC_URL }}js/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="{{ STATIC_URL }}js/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+        <!-- Optionally add helpers - button, thumbnail and/or media
+        <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+        <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+        <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+        <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+        <!-- FIM FANCYBOX -->
+        <style type="text/css">
+            body {
+                font-size:20px;
+                font-family:Raleway;
+            }
+            .bg-color-1 {
+                background-color:#69D2E7;
+            }
+            .bg-color-2 {
+                background-color:#A7DBD8;
+            }
+            .bg-color-3 {
+                background-color:#E0E4CC;
+            }
+            .bg-color-4 {
+                background-color:#F38630;
+            }
+            .bg-color-5 {
+                background-color:#FA6900;
+            }
+            .bg-odoo {
+                background:url(bg-odoo.png);
+                background-position:center center;
+            }
+            .bg-android {
+                background:url(bg-android.png);
+                background-position:center center;
+                background-color:rgba(0, 0, 0, 0.5);
+            }
+            .color-1 {color:#69D2E7}
+            .color-2 {color:#A7DBD8}
+            .color-3 {color:#E0E4CC}
+            .color-4 {color:#F38630}
+            .color-5 {color:#FA6900}
+            .main-greeting {font-weight:bold;font-size:2em;}
+            .second-greeting {font-size:1.5em;}
+            a {color: #F38630}
+            .main {margin-top:50px;}
+            
+            blockquote {
+                text-align:center;
+                padding: 20px;
+                border: none;
+                quotes: "\201C" "\201D";
+                display: inline-block;
+                position: relative;
+                font-size:1.3em;
+            }
+
+            blockquote:before { 
+                content: open-quote;
+                font-weight: bold;
+                font-size:2.5em;
+            } 
+            blockquote:after { 
+                content: close-quote;
+                font-weight: bold;
+                font-size:2.5em;
+            }
+            .skill {
+            	float:left;
+            	margin-right:10px;
+            	border-radius:5px;
+            	padding:5px;
+            	font-size:0.8em;
+            	color:#FFF;
+            	text-shadow: 1px 1px #000;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".fancybox").fancybox({type: 'ajax', dataType: 'html', width:'800', autoSize: false});
+            });
+        </script>
+    </head>
+    <body>
+         <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img src="{{ STATIC_URL }}img/logo_fullside_h60.png" height="25" /></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="../navbar/">Contato</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+        <div class="container-fluid main">
+        	{% autoescape off %}
+        	{% for block in blocks %}
+            <div class="row">
+            	{% if block.background %}
+            		<div class="col-md-12" style="background:url({{ block.backgroundurl }});background-position:center center;padding:10px">
+            	{% else %}
+                	<div class="col-md-12" style="background:{{ block.background_color }}">
+                {% endif %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12" style="padding:40px">
+                            	{% if block.blockcase %}
+                            		<p style="text-align:center;font-weight:bold;color:#FFF;margin:0"><a href="{% url 'case' block.blockcase.case.slug %}" class="fancybox"><img src="{{ block.blockcase.logourl }}" height="60" /></a></p>
+                               	{% endif %}
+                               	{{ block.text }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endautoescape %}
+        </div>
+        <div class="container">
+        	<div class="row">
+        		<div class="col-md-12">
+        			<h2>Skills</h2>
+        			<p>Estou preparado para trabalhar com qualquer uma das seguintes linguagens/tecnologias</p>
+        			{% for skill in skills %}
+        				<div class="skill" style="background-color:{{ skill.color }}">{{ skill.name }}</div>
+        			{% endfor %}
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-md-12">
+        			<h2>É hora de falar sobre você!</h2>
+        			Acho que não precisamos mais falar de mim, agora vamos discutir sobre o SEU Projeto:
+        		</div>
+        	</div>
+        </div>
+    </body>
+</html>
