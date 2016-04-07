@@ -11,3 +11,6 @@ def case(request, name):
     case = Case.objects.get(slug=name)
     context = {'case': case}
     return render(request, 'main/case.ajax.html', context)
+
+def contact(request):
+    return render(request, 'main/index.html')

@@ -21,6 +21,7 @@ from settings import MEDIA_ROOT
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^redactor/', include('redactor.urls')),
+    url(r'^contact/', views.contact, name='contact'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
                  {'document_root': MEDIA_ROOT}),
     url(r'^$', views.index, name='index'),

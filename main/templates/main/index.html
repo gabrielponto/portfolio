@@ -94,6 +94,24 @@
             	color:#FFF;
             	text-shadow: 1px 1px #000;
             }
+            .contact-submit {
+            	background:#F38630;
+            	width:100%;
+            	padding:5px;
+            	font-size:1.5em;
+            	color:#FFF;
+            	text-transform:uppercase;
+            	letter-spacing:0.5px;
+            	font-weight:bold;
+            }
+            .default-padding {
+            	padding:20px;
+            }
+            .clear {clear:both;}
+            .badges {margin-bottom:10px;margin-top:10px;}
+            .badges .item {float:left;margin-left:30px}
+            .badges .item img {height:80px;}
+            .link-cfa {color:#FFF;text-align:center;display:block}
         </style>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -134,9 +152,16 @@
                         <div class="row">
                             <div class="col-md-12" style="padding:40px">
                             	{% if block.blockcase %}
-                            		<p style="text-align:center;font-weight:bold;color:#FFF;margin:0"><a href="{% url 'case' block.blockcase.case.slug %}" class="fancybox"><img src="{{ block.blockcase.logourl }}" height="60" /></a></p>
+                            		<p style="text-align:center;font-weight:bold;color:#FFF;margin:0">
+                            			<a href="{% url 'case' block.blockcase.case.slug %}" class="fancybox">
+                           					<img src="{{ block.blockcase.logourl }}" height="60" />
+                         				</a>
+                      				</p>
                                	{% endif %}
                                	{{ block.text }}
+                               	{% if block.blockcase %}
+                               		<a href="{% url 'case' block.blockcase.case.slug %}" class="fancybox link-cfa">Clique aqui para saber mais</a>
+                               	{% endif %}
                             </div>
                         </div>
                     </div>
@@ -147,19 +172,76 @@
         </div>
         <div class="container">
         	<div class="row">
-        		<div class="col-md-12">
+        		<div class="col-md-12 default-padding">
         			<h2>Skills</h2>
         			<p>Estou preparado para trabalhar com qualquer uma das seguintes linguagens/tecnologias</p>
         			{% for skill in skills %}
         				<div class="skill" style="background-color:{{ skill.color }}">{{ skill.name }}</div>
         			{% endfor %}
+        			<div class="clear"></div>
+        			<h2>Developer Profiles</h2>
+        			<div class="badges">
+        				<div class="item">
+        					<a href="https://github.com/gabrielponto" title="GitHub" target="_blank"><img src="{{ STATIC_URL }}img/github_logo.png" /></a>
+        				</div>
+        				<div class="item">
+        					<a href="https://www.codeeval.com/profile/gabrieloliveira/" title="CodeEval" target="_blank"><img src="{{ STATIC_URL }}img/codeeval-logo.png" /></a>
+        				</div>
+        				<div class="item">
+        					<a href="http://stackoverflow.com/users/1848721/gabrieloliveira" title="StackOverflow" target="_blank"><img src="{{ STATIC_URL }}img/stack-overflow-logo.png" /></a>
+        				</div>
+        				<div class="clear"></div>
+        			</div>
         		</div>
         	</div>
-        	<div class="row">
+        </div>
+        <div class="container-fluid">
+        	<div class="row bg-color-2">
         		<div class="col-md-12">
-        			<h2>É hora de falar sobre você!</h2>
-        			Acho que não precisamos mais falar de mim, agora vamos discutir sobre o SEU Projeto:
-        		</div>
+        			<div class="container">
+			        	<div class="row">
+			        		<div class="col-md-12 default-padding">
+			        			<h2>É hora de falar sobre você!</h2>
+			        			<p>Agora vamos discutir sobre o SEU Projeto:</p>
+			        			<form action="{% url 'contact' %}" method="post">
+			        				<table style="width:100%">
+			        					<tr>
+			        						<th><label for="name">Seu Nome: </label></th>
+			        						<th><label for="email">Seu E-mail: </label></th>
+			        					</tr>
+			        					<tr>
+			        						<td><input type="text" name="name" id="name" placeholder="insira aqui seu nome..." /></td>
+			        						<td><input type="text" name="email" id="email" placeholder="insira aqui seu e-mail..." /></td>
+			       						</tr>
+			       						<tr>
+			       							<th colspan="2"><label for="message">O que você precisa?</label></th>
+			       						</tr>
+			       						<tr>
+			       							<td colspan="2"><textarea style="width:100%" name="message" id="message" placeholder="Escreva aqui o problema que você está enfrentando e como eu posso lhe ajudar..."></textarea></td>
+			       						</tr>
+			     					</table>
+			        				<input type="submit" value="Enviar" class="contact-submit" />
+			        			</form>
+			        			<p style="font-size:0.8em;text-align:center">Ps: Você não está enviando uma mensagem para um robô, existe uma pessoa Real que irá responder seu e-mail.</p>
+			        		</div>
+			        	</div>
+		        	</div>
+	        	</div>
+        	</div>
+        </div>
+        <div class="container-fluid">
+        	<div class="row bg-color-3">
+        		<div class="col-md-12">
+	        		<div class="container">
+	        			<div class="row">
+			        		<div class="col-md-12">
+			        			<blockquote>Dois ratos cairam em um pote de nata, O primeiro rato desistiu e se afogou, 
+								<br />O segundo rato se esforçou tanto que transformou a nata em manteiga e saiu.</blockquote>
+								<p style="text-align:right;font-size:0.8em">Autor Desconhecido</p>
+			        		</div>
+			        	</div>
+			        </div>
+		        </div>
         	</div>
         </div>
     </body>
