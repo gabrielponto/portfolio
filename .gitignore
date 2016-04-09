@@ -4,3 +4,4 @@
 .settings
 settings.py
 db.sqlite3
+Portfolio/settings.py

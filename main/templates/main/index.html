@@ -26,10 +26,49 @@
         <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
         <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
         <!-- FIM FANCYBOX -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+        <script type="text/javascript">
+        	function hide_float_message() {
+        		$('.float-message').animate({
+        			height: 'hide'
+        		}, 1000);
+        	}
+        	$.validator.messages.required = 'Você precisa informar esse campo para que eu entre em contato';
+        	$(document).ready(function() {
+        		$('#contact-form').validate();
+        		{% if contact %}
+        		$('body').append('<div class="float-message">Mensagem enviada com sucesso! Aguarde uma resposta em no máximo 24 horas</div>');
+        		$('.float-message').animate({
+        			height: 'show'
+        		}, 1000);
+        		setTimeout('hide_float_message()', 8000);
+        		{% endif %}
+        	});
+        </script>
         <style type="text/css">
             body {
                 font-size:20px;
                 font-family:Raleway;
+            }
+            .float-message {
+            	display:none;
+            	position:fixed;
+            	top:0;
+            	left:0;
+            	padding:10px;
+            	width:100%;
+            	text-align:center;
+            	background:#69D2E7;
+            	color:white;
+            	font-weight:bold;
+            	z-index:100000;
+            }
+            .message {
+            	padding:10px;
+            	text-align:center;
+            	background:#69D2E7;
+            	color:white;
+            	font-weight:bold;
             }
             .bg-color-1 {
                 background-color:#69D2E7;
@@ -112,6 +151,7 @@
             .badges .item {float:left;margin-left:30px}
             .badges .item img {height:80px;}
             .link-cfa {color:#FFF;text-align:center;display:block}
+            .error {color:red;}
         </style>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -203,21 +243,25 @@
 			        		<div class="col-md-12 default-padding">
 			        			<h2>É hora de falar sobre você!</h2>
 			        			<p>Agora vamos discutir sobre o SEU Projeto:</p>
-			        			<form action="{% url 'contact' %}" method="post">
+			        			{% if contact %}
+			        			<p class="message">Sua mensagem foi enviada!</p>
+			        			{% endif %}
+			        			<form action="{% url 'contact' %}" method="post" id="contact-form">
+			        				{% csrf_token %}
 			        				<table style="width:100%">
 			        					<tr>
 			        						<th><label for="name">Seu Nome: </label></th>
 			        						<th><label for="email">Seu E-mail: </label></th>
 			        					</tr>
 			        					<tr>
-			        						<td><input type="text" name="name" id="name" placeholder="insira aqui seu nome..." /></td>
-			        						<td><input type="text" name="email" id="email" placeholder="insira aqui seu e-mail..." /></td>
+			        						<td><input type="text" name="name" id="name" placeholder="insira aqui seu nome..." required/></td>
+			        						<td><input type="text" name="email" id="email" placeholder="insira aqui seu e-mail..." required /></td>
 			       						</tr>
 			       						<tr>
 			       							<th colspan="2"><label for="message">O que você precisa?</label></th>
 			       						</tr>
 			       						<tr>
-			       							<td colspan="2"><textarea style="width:100%" name="message" id="message" placeholder="Escreva aqui o problema que você está enfrentando e como eu posso lhe ajudar..."></textarea></td>
+			       							<td colspan="2"><textarea style="width:100%" name="message" id="message" placeholder="Escreva aqui o problema que você está enfrentando e como eu posso lhe ajudar..." required></textarea></td>
 			       						</tr>
 			     					</table>
 			        				<input type="submit" value="Enviar" class="contact-submit" />
